@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Carioca:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Carioca_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Carioca" />
+          <element id="module-output" name="Harioca" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="D:\Carioca\libs\GWT\2.4.0\gwt-servlet.jar" />
+        </element>
+      </element>
+      <element id="gwt-compiler-output" facet="Carioca/gwt/GWT" />
+      <element id="javaee-facet-resources" facet="Harioca/web/Web" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,47 @@
+
+/*h1 {*/
+    /*font-size: 2em;*/
+    /*font-weight: bold;*/
+    /*text-align: center;*/
+/*}*/
+
+/*body, td, a, div, .p {*/
+    /*font-family: arial, sans-serif*/
+/*}*/
+
+
+.carioca-upperToolBar {
+	/*border: 1px #92C1F0 solid;*/
+
+    /*width: 100%;*/
+    /*height: 50px;*/
+
+    background: url("images/logo.png") no-repeat left;
+}
+
+.carioca-logo {
+    color: #1f497d;
+}
+
+.carioca-upperButton {
+    /*color: #1f497d;*/
+    color: #007e00;
+    font-weight: bold;
+    /*text-align: left;*/
+    /*margin-left: 8px;*/
+    /*width: 100;*/
+    /*height: 20px;*/
+    background: url("images/upperButtonBG.gif");
+}
+
+.carioca-upperButton-d {
+    color: #679e67;
+    font-weight: bold;
+    background: url("images/upperButtonBG_d.gif");
+}
+
+.carioca-upperButton-latest {
+    color: #1f497d;
+    background: url("images/upperButton-latest-bg.png") no-repeat right;
+}
+
