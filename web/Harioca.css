@@ -10,7 +10,7 @@
 /*}*/
 
 
-.carioca-upperToolBar {
+.harioca-upperToolBar {
 	/*border: 1px #92C1F0 solid;*/
 
     /*width: 100%;*/
@@ -19,11 +19,11 @@
     background: url("images/logo.png") no-repeat left;
 }
 
-.carioca-logo {
+.harioca-logo {
     color: #1f497d;
 }
 
-.carioca-upperButton {
+.harioca-upperButton {
     /*color: #1f497d;*/
     color: #007e00;
     font-weight: bold;
@@ -34,13 +34,13 @@
     background: url("images/upperButtonBG.gif");
 }
 
-.carioca-upperButton-d {
+.harioca-upperButton-d {
     color: #679e67;
     font-weight: bold;
     background: url("images/upperButtonBG_d.gif");
 }
 
-.carioca-upperButton-latest {
+.harioca-upperButton-latest {
     color: #1f497d;
     background: url("images/upperButton-latest-bg.png") no-repeat right;
 }

@@ -42,7 +42,7 @@ public class HariocaEntryPoint implements EntryPoint {
 
     private void addUpperToolBar() {
         HLayout upperToolBar = new HLayout(16);
-        upperToolBar.setStyleName("carioca-upperToolBar");
+        upperToolBar.setStyleName("harioca-upperToolBar");
         upperToolBar.setAlign(Alignment.CENTER);          // todo to css
         upperToolBar.setWidth("98%"); // todo remove
         upperToolBar.setHeight(50); // todo remove to css
