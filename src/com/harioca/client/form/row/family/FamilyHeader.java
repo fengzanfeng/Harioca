@@ -1,4 +1,4 @@
-package com.harioca.client.smartgwt.widget;
+package com.harioca.client.form.row.family;
 
 import com.harioca.client.smartgwt.FormItemFactory;
 import com.smartgwt.client.widgets.Canvas;
@@ -12,15 +12,16 @@ public class FamilyHeader extends Label {
 
     public FamilyHeader(String familyId) {
         super(familyId);
-        setBackgroundColor("#eef6f2");
-        setHeight(20);
         setID(FormItemFactory.getItemId(familyId));
-//            setWidth("100%");
-//        setAlign(Alignment.RIGHT);
+
+        setHeight(20);
+        setPadding(5);
+
         setIcon("icons/opener_opened.png");
         setIconOrientation("right");
         setIconAlign("right");
-        setPadding(5);
+
+        setBackgroundColor("#eef6f2");
     }
 
     public void addExpandClickHandler(final FamilyLayout familyLayout) {

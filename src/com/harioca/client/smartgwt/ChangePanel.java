@@ -1,5 +1,6 @@
-package com.harioca.client.smartgwt.widget;
+package com.harioca.client.smartgwt;
 
+import com.harioca.client.form.row.family.FamilyHeader;
 import com.smartgwt.client.types.*;
 import com.smartgwt.client.widgets.*;
 import com.smartgwt.client.widgets.form.DynamicForm;

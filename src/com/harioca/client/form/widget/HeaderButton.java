@@ -1,4 +1,4 @@
-package com.harioca.client.smartgwt.widget;
+package com.harioca.client.form.widget;
 
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Label;
@@ -7,7 +7,7 @@ import com.smartgwt.client.widgets.events.MouseOutHandler;
 import com.smartgwt.client.widgets.events.MouseOverEvent;
 import com.smartgwt.client.widgets.events.MouseOverHandler;
 
-public class PrimaryToolStripButton extends Label {
+public class HeaderButton extends Label {
 
     private Boolean isPressed = false;
 
@@ -17,7 +17,7 @@ public class PrimaryToolStripButton extends Label {
     private String pressedColor = "FFE9E9";
     private String pressedBorder = "FF2E2E";
 
-    public PrimaryToolStripButton(String contents, String hotKey) {
+    public HeaderButton(String contents, String hotKey) {
         super("<font color=#0000FF>" + contents + "</font>&nbsp&nbsp&nbsp<font color=#909090>" + hotKey + "</font>");
         this.contents = contents;
         this.hotKey = hotKey;
@@ -54,11 +54,4 @@ public class PrimaryToolStripButton extends Label {
         setBorder(isPressed ? "1px solid #" + pressedBorder : null);
     }
 
-    public void setPressedColor(String pressedColor) {
-        this.pressedColor = pressedColor;
-    }
-
-    public void setPressedBorder(String pressedBorder) {
-        this.pressedBorder = pressedBorder;
-    }
 }

@@ -1,18 +1,15 @@
-package com.harioca.client.smartgwt.widget;
+package com.harioca.client.form.row.family;
 
+import com.harioca.client.form.row.family.FamilyHeader;
+import com.harioca.client.form.row.family.FamilyLayoutFirstLoad;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.layout.Layout;
 
 public class FamilyLayout extends Layout {
 
-    private final String familyId;
     private final FamilyHeader familyHeader;
 
     public FamilyLayout(FamilyLayoutFirstLoad familyLayoutFirstLoad) {
-        super();
-        familyId = familyLayoutFirstLoad.getFamilyId();
-        familyHeader = familyLayoutFirstLoad.getHeader();
-
         setTop(familyLayoutFirstLoad.getTop());
         setLeft(familyLayoutFirstLoad.getLeft());
         setWidth(familyLayoutFirstLoad.getVisibleWidth());
@@ -23,18 +20,11 @@ public class FamilyLayout extends Layout {
             addChild(item);
         }
 
+        familyHeader = familyLayoutFirstLoad.getHeader();
         familyHeader.addExpandClickHandler(this);
-    }
-
-    public String getFamilyId() {
-        return familyId;
     }
 
     public FamilyHeader getFamilyHeader() {
         return familyHeader;
-    }
-
-    public Boolean isExpanded() {
-        return getFamilyHeader().isExpanded();
     }
 }

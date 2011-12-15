@@ -1,9 +1,10 @@
-package com.harioca.client.smartgwt.widget;
+package com.harioca.client.form.row;
 
-import com.harioca.client.bean.hbase.row.HFamily;
-import com.harioca.client.bean.hbase.row.HRow;
+import com.harioca.client.form.row.family.FamilyHeader;
+import com.harioca.client.form.row.family.FamilyLayout;
+import com.harioca.client.form.row.family.FamilyLayoutFirstLoad;
+import com.harioca.client.form.row.rowid.RowIdLayout;
 import com.smartgwt.client.types.DragAppearance;
-import com.smartgwt.client.types.LayoutPolicy;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.layout.Layout;
 
@@ -11,29 +12,12 @@ public class HRowFormLayout extends Layout {
 
     private Boolean inFloatingMode = false;
 
-    public HRowFormLayout() {
-        super();
+    public HRowFormLayout(HRowFormFirstLoadLayout hRowFormFirstLoadLayout) {
+        setMembersMargin(10);
 
-        setVertical(true);
-        setHPolicy(LayoutPolicy.NONE);
-        setTop(40);
-        setLeft("3%");
-        setWidth("94%");
-    }
-
-    public void loadRow(HRow hRow) {
-        final RowIdLayout rowIdLayout = new RowIdLayout(hRow.getRowId());
-        addMember(rowIdLayout);
-        for (HFamily hFamily : hRow.getHFamilies()) {
-            final FamilyLayoutFirstLoad familyLayoutFirstLoad = new FamilyLayoutFirstLoad(hFamily);
-            addMember(familyLayoutFirstLoad);
-        }
-    }
-
-    public void postProcess() {
-        for (final Canvas layoutFirstLoad : getMembers()) {
+        for (final Canvas layoutFirstLoad : hRowFormFirstLoadLayout.getMembers()) {
             if (layoutFirstLoad instanceof RowIdLayout) {
-                removeMember(layoutFirstLoad);
+                hRowFormFirstLoadLayout.removeMember(layoutFirstLoad);
                 addChild(layoutFirstLoad);
             } else {
                 FamilyLayout familyLayout = new FamilyLayout((FamilyLayoutFirstLoad) layoutFirstLoad);
@@ -71,5 +55,4 @@ public class HRowFormLayout extends Layout {
     public Boolean isInFloatingMode() {
         return inFloatingMode;
     }
-
 }

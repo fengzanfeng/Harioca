@@ -15,9 +15,11 @@ public class FormItemFactory {
         } else if ("TextAreaItem".equals(formItemType)) {
             formItem = new TextAreaItem();
         } else if ("CheckboxItem".equals(formItemType)) {
-            formItem = new CheckboxItem();
-        } else if ("DateTimeItem".equals(formItemType)) {
-            formItem = new DateTimeItem();
+            CheckboxItem ci = new CheckboxItem();
+            ci.setLabelAsTitle(true);
+            formItem = ci;
+//        } else if ("DateTimeItem".equals(formItemType)) {
+//            formItem = new DateTimeItem();
             // todo add file image support
         } else {
             throw new ViewBuildingException("Unknown component class " + formItemType);
@@ -28,9 +30,9 @@ public class FormItemFactory {
 
     // todo try to find out item type
     public static String guessElement(HKeyValue hKeyValue) {
-        if (new Random().nextBoolean()) {
-            return "DateTimeItem";
-        } else {
+//        if (new Random().nextBoolean()) {
+//            return "DateTimeItem";
+//        } else {
             if (new Random().nextBoolean()) {
                 return "TextAreaItem";
             } else {
@@ -40,11 +42,14 @@ public class FormItemFactory {
                     return "TextItem";
                 }
             }
-        }
+//        }
     }
 
-    public static String getItemId(Object key) {
-        return "kv" + Math.abs(key != null ? key.hashCode() : 0);   // todo better algorithm?
+    public static String getItemId(String key) {
+        // todo hashCode
+        int result = new Random().nextInt();
+        return "kv" + Math.abs(result);
+
     }
 
 }

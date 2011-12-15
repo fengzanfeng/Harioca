@@ -1,4 +1,4 @@
-package com.harioca.client.smartgwt.widget;
+package com.harioca.client.form.row.family;
 
 import com.harioca.client.bean.hbase.row.HKeyValue;
 import com.harioca.client.smartgwt.FormItemFactory;
@@ -10,22 +10,17 @@ public class KeyValueElement extends DynamicForm {
     private final HKeyValue hKeyValue;
     private final String elementId;
 
-    private final FormItem item;
-
-    public KeyValueElement(HKeyValue hKeyValue) {
+    public KeyValueElement(HKeyValue hKeyValue, int maxValueLength) {
         this.hKeyValue = hKeyValue;
         elementId = FormItemFactory.getItemId(hKeyValue.getKey());
 
-        item = createFormItemFromScratch();
-        setItems(item);
+        setItems(createFormItemFromScratch());
 
         setID(elementId);
         setWrapItemTitles(false);
         setCanSelectText(true);
 
-        setColWidths(0, 300);
-
-//        setBorder("1px solid #ff4040");
+        setMinColWidth(maxValueLength * 5 + 24);
     }
 
     private FormItem createFormItemFromScratch() {
@@ -34,8 +29,9 @@ public class KeyValueElement extends DynamicForm {
         item.setValue(hKeyValue.getValue());
         item.setTitle(hKeyValue.getKey());
         item.setName(elementId);
+
         item.setWidth("100%");
-//        formItem.setHeight("100%");
+        setTitleWidth(hKeyValue.getKey().length() * 5 + 12);
 
         return item;
     }

@@ -1,8 +1,9 @@
-package com.harioca.client.smartgwt.widget;
+package com.harioca.client.form.row.family;
 
 import com.harioca.client.bean.hbase.row.HFamily;
 import com.harioca.client.bean.hbase.row.HKeyValue;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.LayoutPolicy;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 public class FamilyLayoutFirstLoad extends VLayout {
@@ -13,24 +14,34 @@ public class FamilyLayoutFirstLoad extends VLayout {
 
     public FamilyLayoutFirstLoad(HFamily hFamily) {
         this(hFamily.getFamilyId());
+
+        int maxValueLength = getMaxValueLength(hFamily);
         for (HKeyValue hKeyValue : hFamily.getHKeyValues()) {
-            addMember(new KeyValueElement(hKeyValue));
+            addMember(new KeyValueElement(hKeyValue, maxValueLength));
         }
     }
 
     public FamilyLayoutFirstLoad(String familyId) {
-        super();
+        setHPolicy(LayoutPolicy.NONE);
+
         this.familyId = familyId;
         setDefaultLayoutAlign(Alignment.RIGHT);
-        setExtraSpace(10);
-        setMembersMargin(5);
-
-//        setLayoutTopMargin(3);
+        setMembersMargin(2);
         setLayoutLeftMargin(3);
         setLayoutRightMargin(3);
 
         header = new FamilyHeader(familyId);
         addMember(header);
+    }
+
+    private int getMaxValueLength(HFamily hFamily) {
+        int maxValueLength = 0;
+        for (HKeyValue hKeyValue : hFamily.getHKeyValues()) {
+            if (maxValueLength < hKeyValue.getValue().length()) {
+                maxValueLength = hKeyValue.getValue().length();
+            }
+        }
+        return maxValueLength;
     }
 
     public String getFamilyId() {
