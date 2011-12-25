@@ -81,3 +81,13 @@
     /*border: 1px #a0a0a0 solid;*/
     border-top: 2px #92C1F0 solid;
 }
+
+.harioca-familyPanel {
+    background-color: #eef6f2;
+    border: 1px solid #bfdfcc;
+}
+
+.harioca-familyItemsPanel {
+    background-color: #ffffff;
+    border-top: 1px solid #bfdfcc;
+}

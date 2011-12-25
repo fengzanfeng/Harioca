@@ -1,9 +1,6 @@
 package com.harioca.client;
 
-import com.harioca.client.bean.form.HForm;
-import com.harioca.client.bean.hbase.row.HFamily;
-import com.harioca.client.bean.hbase.row.HKeyValue;
-import com.harioca.client.bean.hbase.row.HRow;
+import com.harioca.client.bean.hbase.*;
 
 import java.util.*;
 
@@ -41,147 +38,36 @@ public class TestData___DeleteMe {
         HRow hRow = new HRow();
         hRow.setRowId("this is rowId #" + number);
 
-        List<HFamily> hFamilyList = new ArrayList<HFamily>();
+        Map<String, Map<String, String>> data = new HashMap<String, Map<String, String>>();
 
         // family 1
-        HFamily hFamily1 = new HFamily();
-        hFamily1.setFamilyId("<b>first family</b>");
-        hFamilyList.add(hFamily1);
-        List<HKeyValue> hKeyValueList1 = new ArrayList<HKeyValue>();
+        Map<String, String> hKeyValueMap1 = new HashMap<String, String>();
         for (String columnName : columnsFamily1.keySet()) {
             if (new Random().nextBoolean()) {
-                HKeyValue hKeyValue1 = new HKeyValue();
-                hKeyValue1.setKey(columnName);
-                hKeyValue1.setValue(columnsFamily1.get(columnName) + number);
-                hKeyValueList1.add(hKeyValue1);
+                hKeyValueMap1.put(columnName, columnsFamily1.get(columnName) + number);
             }
         }
-        hFamily1.setHKeyValues(hKeyValueList1);
+        data.put("<b>first family</b>", hKeyValueMap1);
 
         // family 2
-        HFamily hFamily2 = new HFamily();
-        hFamily2.setFamilyId("<b>second family</b>");
-        hFamilyList.add(hFamily2);
-        List<HKeyValue> hKeyValueList2 = new ArrayList<HKeyValue>();
+        Map<String, String> hKeyValueMap2 = new HashMap<String, String>();
         for (String columnName : columnsFamily2.keySet()) {
             if (new Random().nextBoolean()) {
-                HKeyValue hKeyValue2 = new HKeyValue();
-                hKeyValue2.setKey(columnName);
-                hKeyValue2.setValue(columnsFamily2.get(columnName) + number);
-                hKeyValueList2.add(hKeyValue2);
+                hKeyValueMap2.put(columnName, columnsFamily2.get(columnName) + number);
             }
         }
-        hFamily2.setHKeyValues(hKeyValueList2);
+        data.put("<b>second family</b>", hKeyValueMap2);
 
-        hRow.setHFamilies(hFamilyList);
+        hRow.setData(data);
 
         return hRow;
     }
 
-//    public static HRow getTestData() {
-//        HRow hRow = new HRow();
-//        hRow.setRowId("test_test_test_1");
-//
-//        List<HFamily> hFamilyList = new ArrayList<HFamily>();
-//
-//        // family 1
-//        HFamily hFamily1 = new HFamily();
-//        hFamily1.setFamilyId("<b>first family</b>");
-//
-//        List<HKeyValue> hKeyValueList1 = new ArrayList<HKeyValue>();
-//
-//        HKeyValue hKeyValue1 = new HKeyValue();
-//        hKeyValue1.setKey("shor t");
-//        hKeyValue1.setValue("biiiig bigggg vaaaaaluuuuuueeee");
-//        hKeyValueList1.add(hKeyValue1);
-//
-//        hKeyValue1 = new HKeyValue();
-//        hKeyValue1.setKey("Long long key naaaaaaaam e");
-//        hKeyValue1.setValue("short");
-//        hKeyValueList1.add(hKeyValue1);
-//
-//        hKeyValue1 = new HKeyValue();
-//        hKeyValue1.setKey("shor t 43534 4");
-//        hKeyValue1.setValue("sdwsgsgrthgr rt gdrtg hrdth rd");
-//        hKeyValueList1.add(hKeyValue1);
-//
-//        hKeyValue1 = new HKeyValue();
-//        hKeyValue1.setKey("fgfgh sdsss");
-//        hKeyValue1.setValue("sssddfg rhrhrg 433t45");
-//        hKeyValueList1.add(hKeyValue1);
-//
-//        hFamily1.setHKeyValues(hKeyValueList1);
-//
-//        hFamilyList.add(hFamily1);
-//
-//        // family 2
-//        HFamily hFamily2 = new HFamily();
-//        hFamily2.setFamilyId("<b>second family</b>");
-//
-//        List<HKeyValue> hKeyValueList2 = new ArrayList<HKeyValue>();
-//
-//        HKeyValue hKeyValue2 = new HKeyValue();
-//        hKeyValue2.setKey("Qualifier");
-//        hKeyValue2.setValue("Value");
-//        hKeyValueList2.add(hKeyValue2);
-//
-//        hKeyValue2 = new HKeyValue();
-//        hKeyValue2.setKey("z z x x c c ");
-//        hKeyValue2.setValue("222214352346");
-//        hKeyValueList2.add(hKeyValue2);
-//
-//        hKeyValue2 = new HKeyValue();
-//        hKeyValue2.setKey("a ffffffffffffffffff a");
-//        hKeyValue2.setValue("true");
-//        hKeyValueList2.add(hKeyValue2);
-//
-//        hFamily2.setHKeyValues(hKeyValueList2);
-//
-//        hFamilyList.add(hFamily2);
-//
-//        hRow.setHFamilies(hFamilyList);
-//
-//        return hRow;
-//    }
-//
-//    public static HRow getTestData2() {
-//        HRow hRow = new HRow();
-//        hRow.setRowId("2+--=test_test_test_2");
-//
-//        List<HFamily> hFamilyList = new ArrayList<HFamily>();
-//
-//        // family 1
-//        HFamily hFamily1 = new HFamily();
-//        hFamily1.setFamilyId("<b>first family 222</b>");
-//
-//        List<HKeyValue> hKeyValueList1 = new ArrayList<HKeyValue>();
-//
-//        HKeyValue hKeyValue1 = new HKeyValue();
-//        hKeyValue1.setKey("22 shor t");
-//        hKeyValue1.setValue("22 biiiig bigggg vaaaaaluuuuuueeee");
-//        hKeyValueList1.add(hKeyValue1);
-//
-//        hKeyValue1 = new HKeyValue();
-//        hKeyValue1.setKey("222 Long long key naaaaaaaam e");
-//        hKeyValue1.setValue("22 short");
-//        hKeyValueList1.add(hKeyValue1);
-//
-//        hKeyValue1 = new HKeyValue();
-//        hKeyValue1.setKey("22 shor t 43534 4");
-//        hKeyValue1.setValue("222 2 sdwsgsgrthgr rt gdrtg hrdth rd");
-//        hKeyValueList1.add(hKeyValue1);
-//
-//        hKeyValue1 = new HKeyValue();
-//        hKeyValue1.setKey("22 2fgfgh sdsss");
-//        hKeyValue1.setValue("22 2 sssddfg rhrhrg 433t45");
-//        hKeyValueList1.add(hKeyValue1);
-//
-//        hFamily1.setHKeyValues(hKeyValueList1);
-//
-//        hFamilyList.add(hFamily1);
-//
-//        hRow.setHFamilies(hFamilyList);
-//
-//        return hRow;
-//    }
+    public static HPageDefinition getHPageDefinition() {
+        HPageDefinition hPageDefinition = new HPageDefinition();
+        hPageDefinition.setRowIdType(new HItemDefinition());
+        Map<String, List<HItemDefinition>> families = new HashMap<String, List<HItemDefinition>>();
+        hPageDefinition.setFamilies(families);
+        return hPageDefinition;
+    }
 }

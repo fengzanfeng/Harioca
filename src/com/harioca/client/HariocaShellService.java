@@ -3,16 +3,18 @@ package com.harioca.client;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.harioca.client.bean.hbase.HPageDefinition;
+import com.harioca.client.bean.hbase.HRow;
 
 @RemoteServiceRelativePath("HariocaShellService")
 public interface HariocaShellService extends RemoteService {
-    // Sample interface method of remote interface
-    String run(String msg);
 
-    /**
-     * Utility/Convenience class.
-     * Use HariocaShellService.App.getInstance() to access static instance of MySampleApplicationServiceAsync
-     */
+    String run(String code);
+
+    HRow getHRow(Integer rowN);
+
+    HPageDefinition getHPageDefinition();
+
     public static class App {
         private static HariocaShellServiceAsync ourInstance = GWT.create(HariocaShellService.class);
 
