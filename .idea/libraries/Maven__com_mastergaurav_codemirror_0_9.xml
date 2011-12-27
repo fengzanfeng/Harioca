@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Maven: com.mastergaurav:codemirror:0.9">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/gcodemirror-0.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

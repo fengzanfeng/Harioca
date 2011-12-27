@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Harioca:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="harioca-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Harioca:war exploded" />
+    </root>
+  </artifact>
+</component>

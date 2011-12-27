@@ -8,11 +8,14 @@
           <element id="module-output" name="Harioca" />
         </element>
         <element id="directory" name="lib">
-          <element id="file-copy" path="D:\Carioca\libs\GWT\2.4.0\gwt-servlet.jar" />
+          <element id="library" level="project" name="Maven: com.smartgwt:smartgwt:3.0" />
+          <element id="library" level="project" name="Maven: com.mastergaurav:codemirror:0.9" />
+          <element id="library" level="project" name="Maven: com.smartgwt:smartgwt:2.5" />
         </element>
       </element>
       <element id="gwt-compiler-output" facet="Carioca/gwt/GWT" />
       <element id="javaee-facet-resources" facet="Harioca/web/Web" />
+      <element id="gwt-compiler-output" facet="Harioca/gwt/GWT" />
     </root>
   </artifact>
 </component>
