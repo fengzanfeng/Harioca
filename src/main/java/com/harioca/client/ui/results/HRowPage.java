@@ -1,6 +1,6 @@
-package com.harioca.client.ui.form;
+package com.harioca.client.ui.results;
 
-import com.harioca.client.HariocaEntryPoint;
+import com.harioca.client.ui.torefactor.HariocaEntryPoint;
 import com.harioca.client.bean.hbase.HItemDefinition;
 import com.smartgwt.client.types.LayoutPolicy;
 import com.smartgwt.client.widgets.layout.HLayout;

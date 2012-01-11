@@ -1,4 +1,4 @@
-package com.harioca.client.ui.form;
+package com.harioca.client.ui.results;
 
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.CheckboxItem;

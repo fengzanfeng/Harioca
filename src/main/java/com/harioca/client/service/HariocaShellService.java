@@ -1,4 +1,4 @@
-package com.harioca.client;
+package com.harioca.client.service;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
@@ -14,6 +14,8 @@ public interface HariocaShellService extends RemoteService {
     HRow getHRow(Integer rowN);
 
     HPageDefinition getHPageDefinition();
+    
+    String getLog();
 
     public static class App {
         private static HariocaShellServiceAsync ourInstance = GWT.create(HariocaShellService.class);

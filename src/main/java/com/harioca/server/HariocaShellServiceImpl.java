@@ -1,8 +1,7 @@
 package com.harioca.server;
 
-import com.harioca.client.HariocaShellService;
+import com.harioca.client.service.HariocaShellService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.harioca.client.TestData___DeleteMe;
 import com.harioca.client.bean.hbase.HPageDefinition;
 import com.harioca.client.bean.hbase.HRow;
 
@@ -16,6 +15,9 @@ public class HariocaShellServiceImpl extends RemoteServiceServlet implements Har
         return TestData___DeleteMe.getHPageDefinition();
     }
 
+    public String getLog() {
+        return TestData___DeleteMe.getLog();
+    }
 
     // Implementation of sample interface method
     public String run(String msg) {

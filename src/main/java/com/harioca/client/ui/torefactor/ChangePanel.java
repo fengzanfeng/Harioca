@@ -1,4 +1,4 @@
-package com.harioca.client.smartgwt;
+package com.harioca.client.ui.torefactor;
 
 import com.smartgwt.client.types.*;
 import com.smartgwt.client.widgets.*;

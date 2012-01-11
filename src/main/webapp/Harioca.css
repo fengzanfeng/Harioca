@@ -91,3 +91,35 @@
     background-color: #ffffff;
     border-top: 1px solid #bfdfcc;
 }
+
+.harioca-rowBrowser {
+    border: 2px #92C1F0 solid;
+}
+
+.console-connection-label {
+    color: blue;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.console-connection-form {
+    border: 1px solid grey;
+}
+
+.console-libraries-label {
+    color: grey;
+    font-weight: bold;
+}
+
+.console-results-form {
+    border-right: 1px solid #eee;
+}
+
+.console-results-label {
+    font-weight: bold;
+}
+
+.console-advices-form {
+    background: #ffd;
+    border: 1px solid #bfdfcc;
+}

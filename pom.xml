@@ -15,7 +15,7 @@
 
         <gwtVersion>2.4.0</gwtVersion>
         <smartgwtVersion>3.0</smartgwtVersion>
-        <jUnitVersion>4.9</jUnitVersion>
+        <jUnitVersion>4.10</jUnitVersion>
     </properties>
 
     <repositories>

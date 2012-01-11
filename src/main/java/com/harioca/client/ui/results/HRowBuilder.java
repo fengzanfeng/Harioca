@@ -1,10 +1,7 @@
-package com.harioca.client.ui.form;
+package com.harioca.client.ui.results;
 
 
 import com.harioca.client.bean.hbase.*;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class HRowBuilder {
 

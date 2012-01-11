@@ -1,8 +1,8 @@
-package com.harioca.client.ui.form;
+package com.harioca.client.ui.results;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.harioca.client.HariocaEntryPoint;
-import com.harioca.client.HariocaShellService;
+import com.harioca.client.service.HariocaShellService;
+import com.harioca.client.ui.torefactor.HariocaEntryPoint;
 import com.harioca.client.bean.hbase.HPageDefinition;
 import com.harioca.client.bean.hbase.HRow;
 import com.smartgwt.client.types.DragAppearance;
@@ -17,6 +17,7 @@ public class HRowBrowser extends HLayout {
     private final Layout leftDrag = new Layout();
 
     public HRowBrowser() {
+        setStyleName("harioca-rowBrowser");
         setWidth(2 * HariocaEntryPoint.WIDTH_100);
 
         addChild(HRowBuilder.getHRowPage(0));

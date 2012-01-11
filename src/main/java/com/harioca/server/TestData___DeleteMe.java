@@ -1,4 +1,4 @@
-package com.harioca.client;
+package com.harioca.server;
 
 import com.harioca.client.bean.hbase.*;
 
@@ -69,5 +69,9 @@ public class TestData___DeleteMe {
         Map<String, List<HItemDefinition>> families = new HashMap<String, List<HItemDefinition>>();
         hPageDefinition.setFamilies(families);
         return hPageDefinition;
+    }
+
+    public static String getLog() {
+        return  " test log";
     }
 }
