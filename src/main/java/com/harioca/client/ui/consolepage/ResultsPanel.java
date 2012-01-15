@@ -5,7 +5,6 @@ import com.harioca.client.ui.UIContents;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.form.DynamicForm;
-import com.smartgwt.client.widgets.form.fields.LinkItem;
 import com.smartgwt.client.widgets.form.fields.StaticTextItem;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
@@ -14,16 +13,32 @@ public class ResultsPanel extends HLayout {
 
     private UIContents contents = (UIContents) GWT.create(UIContents.class);
 
-    private final StaticTextItem rowsSelected = new StaticTextItem(contents.resultsSelected(), contents.resultsSelected());
-    private final StaticTextItem rowsInserted = new StaticTextItem(contents.resultsInserted(), contents.resultsInserted());
-    private final StaticTextItem rowsDeleted = new StaticTextItem(contents.resultsDeleted(), contents.resultsDeleted());
+    private final StaticTextItem rowsSelected = new StaticTextItem();
+    private final StaticTextItem rowsInserted = new StaticTextItem();
+    private final StaticTextItem rowsDeleted = new StaticTextItem();
     private final StaticTextItem rowsSeeResults = new StaticTextItem();
+
+    private final StaticTextItem timingTotal = new StaticTextItem();
+    private final StaticTextItem timingMeanRequest = new StaticTextItem();
+    private final StaticTextItem timingCompilation = new StaticTextItem();
+
+    private final StaticTextItem performanceRequests = new StaticTextItem();
+    private final StaticTextItem performanceVolume = new StaticTextItem();
+    private final StaticTextItem performanceCPU = new StaticTextItem();
+    private final StaticTextItem performanceMemory = new StaticTextItem();
+    private final StaticTextItem performanceCached = new StaticTextItem();
+
+    private final StaticTextItem logsWarns = new StaticTextItem();
+    private final StaticTextItem logsErrors = new StaticTextItem();
+    private final StaticTextItem logsFullLog = new StaticTextItem();
+
+    private final VLayout advicesPanel = new VLayout();
 
     public ResultsPanel() {
         setMargin(10);
         setHeight(200);
 
-        final Label rowsTitle = new Label("Rows");
+        final Label rowsTitle = new Label(contents.rows());
         rowsTitle.addStyleName("console-results-label");
         rowsTitle.setHeight(20);
         rowsTitle.setWidth(80);
@@ -31,128 +46,96 @@ public class ResultsPanel extends HLayout {
 
         final DynamicForm rowsForm = new DynamicForm();
         rowsForm.addStyleName("console-results-form");
-        rowsForm.setWidth(120);
-//        rowsForm.setMinColWidth(120);
+        rowsForm.setWidth(140);
         rowsForm.setTitleAlign(Alignment.LEFT);
-//        rowsForm.setAlign(Alignment.CENTER);
+        rowsForm.setColWidths(105, 35);
+        rowsSelected.setTitle(contents.selected());
+        rowsInserted.setTitle(contents.inserted());
+        rowsDeleted.setTitle(contents.deleted());
         rowsSeeResults.setShowTitle(false);
-        rowsSeeResults.setValue("<font color='blue' size=3>" + contents.seeResults() + "</font>");
-        rowsForm.setItems(rowsSelected, rowsInserted, rowsDeleted);
-
+        rowsSeeResults.setColSpan(2);
+        rowsSeeResults.setValue("<font color='blue' size=3><u>" + contents.seeResults() + "</u></font>");
+        rowsForm.setItems(rowsSelected, rowsInserted, rowsDeleted, rowsSeeResults);
         addMember(rowsForm);
 
-
-        final Label timingTitle = new Label("Timing (ms) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        final Label timingTitle = new Label(contents.timing());
         timingTitle.addStyleName("console-results-label");
         timingTitle.setAlign(Alignment.CENTER);
         timingTitle.setHeight(20);
         timingTitle.setWidth(150);
         addMember(timingTitle);
 
-        final VLayout timingPanel = new VLayout();
-        timingPanel.addStyleName("console-results-form");
-        timingPanel.setWidth(130);
+        final DynamicForm timingForm = new DynamicForm();
+        timingForm.addStyleName("console-results-form");
+        timingForm.setTitleAlign(Alignment.LEFT);
+        timingForm.setWidth(140);
+        timingForm.setColWidths(105, 35);
+        timingTotal.setTitle(contents.total());
+        timingMeanRequest.setTitle(contents.meanRequest());
+        timingCompilation.setTitle(contents.compilation());
+        timingForm.setItems(timingTotal, timingMeanRequest, timingCompilation);
+        addMember(timingForm);
 
-        final Label timingTotal = new Label("Total: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12");
-        timingTotal.setHeight(20);
-        timingPanel.addMember(timingTotal);
-
-        final Label timingMeanRequest = new Label("Mean per Request:");
-        timingMeanRequest.setHeight(20);
-        timingPanel.addMember(timingMeanRequest);
-
-        final Label rowsCompilation = new Label("Compilation: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4");
-        rowsCompilation.setHeight(20);
-        timingPanel.addMember(rowsCompilation);
-
-        addMember(timingPanel);
-
-
-        final Label performanceTitle = new Label("Performance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        final Label performanceTitle = new Label(contents.performance());
         performanceTitle.addStyleName("console-results-label");
         performanceTitle.setAlign(Alignment.CENTER);
         performanceTitle.setHeight(20);
         performanceTitle.setWidth(160);
         addMember(performanceTitle);
 
-        final VLayout performancePanel = new VLayout();
-        performancePanel.addStyleName("console-results-form");
-        performancePanel.setWidth(130);
+        final DynamicForm performanceForm = new DynamicForm();
+        performanceForm.addStyleName("console-results-form");
+        performanceForm.setTitleAlign(Alignment.LEFT);
+        performanceForm.setWidth(170);
+        performanceForm.setColWidths(105, 65);
+        performanceRequests.setTitle(contents.requests());
+        performanceVolume.setTitle(contents.volume());
+        performanceCPU.setTitle(contents.CPU());
+        performanceMemory.setTitle(contents.memory());
+        performanceCached.setTitle(contents.cached());
+        performanceForm.setItems(performanceRequests, performanceVolume, performanceCPU, performanceMemory, performanceCached);
+        addMember(performanceForm);
 
-        final Label performanceRequests = new Label("Requests: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10");
-        performanceRequests.setHeight(20);
-        performancePanel.addMember(performanceRequests);
-
-        final Label performanceVolume = new Label("Volume: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1422 bytes");
-        performanceVolume.setHeight(20);
-        performancePanel.addMember(performanceVolume);
-
-        final Label performanceCPU = new Label("CPU:");
-        performanceCPU.setHeight(20);
-        performancePanel.addMember(performanceCPU);
-
-        final Label performanceMemory = new Label("Memory:");
-        performanceMemory.setHeight(20);
-        performancePanel.addMember(performanceMemory);
-
-        final Label performanceCached = new Label("Cached: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100 rows");
-        performanceCached.setHeight(20);
-        performancePanel.addMember(performanceCached);
-
-        addMember(performancePanel);
-
-
-        final Label logsTitle = new Label("Logs &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        final Label logsTitle = new Label(contents.logs());
         logsTitle.addStyleName("console-results-label");
         logsTitle.setAlign(Alignment.CENTER);
         logsTitle.setHeight(20);
         logsTitle.setWidth(100);
         addMember(logsTitle);
 
-        final VLayout logsPanel = new VLayout();
-        logsPanel.addStyleName("console-results-form");
-        logsPanel.setWidth(120);
+        final DynamicForm logsForm = new DynamicForm();
+        logsForm.addStyleName("console-results-form");
+        logsForm.setTitleAlign(Alignment.LEFT);
+        logsForm.setWidth(140);
+        logsForm.setColWidths(105, 35);
+        logsWarns.setTitle(contents.warns());
+        logsErrors.setTitle(contents.errors());
+        logsFullLog.setShowTitle(false);
+        logsFullLog.setColSpan(2);
+        logsFullLog.setValue("<font color='blue' size=3><u>" + contents.fullLog() + "</u></font>");
+        logsForm.setItems(logsWarns, logsErrors, logsFullLog);
+        addMember(logsForm);
 
-        final Label logsWarns = new Label("Warns: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0");
-        logsWarns.setHeight(20);
-        logsPanel.addMember(logsWarns);
-
-        final Label logsErrors = new Label("Errors: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0");
-        logsErrors.setHeight(20);
-        logsPanel.addMember(logsErrors);
-
-        final Label logsFullLog = new Label("<font color='blue' size=3><u>See Full Log...</u></font>");
-        logsFullLog.setHeight(20);
-        logsPanel.addMember(logsFullLog);
-
-        addMember(logsPanel);
-
-
-        final Label advicesTitle = new Label("Advices &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        final Label advicesTitle = new Label(contents.advices());
         advicesTitle.addStyleName("console-results-label");
         advicesTitle.setAlign(Alignment.CENTER);
         advicesTitle.setHeight(20);
         advicesTitle.setWidth(120);
         addMember(advicesTitle);
 
-        final VLayout advicesPanel = new VLayout();
         advicesPanel.addStyleName("console-advices-form");
         advicesPanel.setWidth("*");
         advicesPanel.setPadding(10);
         advicesPanel.setMembersMargin(5);
-
-        final Label advicesFirst = new Label("<font size=3> - You got a lot of requests to the server. Try to increase cache volume. </font>");
-        advicesFirst.setHeight(20);
-        advicesPanel.addMember(advicesFirst);
-
-        final Label advicesSecond = new Label("<font size=3> - Hadoop 1.0.0 is released. </font>");
-        advicesSecond.setHeight(20);
-        advicesPanel.addMember(advicesSecond);
-
-        final Label advicesThird = new Label("<font size=3> - You can use hot-key Alt-E to execute your code. </font>");
-        advicesThird.setHeight(20);
-        advicesPanel.addMember(advicesThird);
-
+        final String[] advices = new String[] {
+                contents.advice1(),
+                contents.advice2()
+        };
+        for (String advice : advices) {
+            final Label adviceLabel = new Label("<font size=3>" + advice + "</font>");
+            adviceLabel.setHeight(20);
+            advicesPanel.addMember(adviceLabel);
+        }
         addMember(advicesPanel);
 
         CodeRunner.get().setResultsPanel(this);
@@ -162,6 +145,28 @@ public class ResultsPanel extends HLayout {
         rowsSelected.setValue(100);
         rowsInserted.setValue(0);
         rowsDeleted.setValue(0);
+        
+        timingTotal.setValue(1200);
+        timingMeanRequest.setValue(1);
+        timingCompilation.setValue(17);
+
+        performanceRequests.setValue(10);
+        performanceVolume.setValue("1422 bytes");
+//        performanceCPU.setValue();
+//        performanceMemory.setValue();
+        performanceCached.setValue("100 rows");
+
+        logsWarns.setValue(0);
+        logsErrors.setValue(0);
+        
+        final String[] advices = new String[] {
+                " - You got a lot of requests to the server. Try to increase cache volume."
+        };
+        for (String advice : advices) {
+            final Label adviceLabel = new Label("<font size=3>" + advice + "</font>");
+            adviceLabel.setHeight(20);
+            advicesPanel.addMember(adviceLabel);
+        }
     }
 
 }
