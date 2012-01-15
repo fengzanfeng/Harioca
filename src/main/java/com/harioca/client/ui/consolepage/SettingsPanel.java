@@ -22,7 +22,7 @@ public class SettingsPanel extends VLayout {
         setWidth(260);
 
         final Label connectionLabel = new Label("Connection TestDB 1");
-        connectionLabel.addStyleName("console-connection-label");
+        connectionLabel.setStyleName("console-connection-label");
         connectionLabel.setHeight(20);
         addMember(connectionLabel);
 
@@ -47,7 +47,7 @@ public class SettingsPanel extends VLayout {
         coreDefaultLink.setValue("<font color='blue'><u><b>core-default.xml</b></u></font>");
 
         final DynamicForm connectionShortInfoForm = new DynamicForm();
-        connectionShortInfoForm.addStyleName("console-connection-form");
+        connectionShortInfoForm.setStyleName("console-connection-form");
         connectionShortInfoForm.setCellPadding(5);
         connectionShortInfoForm.setNumCols(1);
         connectionShortInfoForm.setWidth100();
@@ -56,12 +56,12 @@ public class SettingsPanel extends VLayout {
         addMember(connectionShortInfoForm);
 
         final Label librariesLabel = new Label("Libraries");
-        librariesLabel.addStyleName("console-libraries-label");
+        librariesLabel.setStyleName("console-libraries-label");
         librariesLabel.setHeight(20);
         addMember(librariesLabel);
 
         final ListGrid librariesGrid = new ListGrid();
-        librariesGrid.addStyleName("console-connection-form");
+        librariesGrid.setStyleName("console-connection-form");
         librariesGrid.setWidth100();
         librariesGrid.setHeight100();
         librariesGrid.setShowHeader(false);

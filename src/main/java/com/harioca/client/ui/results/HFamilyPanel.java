@@ -15,7 +15,7 @@ public class HFamilyPanel extends VLayout {
 
     public HFamilyPanel(String familyId) {
         setHeight(20);
-        addStyleName("harioca-familyPanel");
+        setStyleName("harioca-familyPanel");
 
         addMember(getHeader(familyId));
 
@@ -27,7 +27,7 @@ public class HFamilyPanel extends VLayout {
         itemsPanel.setMembersMargin(2);
         itemsPanel.setLayoutLeftMargin(3);
         itemsPanel.setLayoutRightMargin(3);
-        itemsPanel.addStyleName("harioca-familyItemsPanel");
+        itemsPanel.setStyleName("harioca-familyItemsPanel");
         addMember(itemsPanel);
     }
 

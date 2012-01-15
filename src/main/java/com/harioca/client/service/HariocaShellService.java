@@ -3,13 +3,14 @@ package com.harioca.client.service;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.harioca.client.bean.ResultsBean;
 import com.harioca.client.bean.hbase.HPageDefinition;
 import com.harioca.client.bean.hbase.HRow;
 
 @RemoteServiceRelativePath("HariocaShellService")
 public interface HariocaShellService extends RemoteService {
 
-    String run(String code);
+    ResultsBean run(String code);
 
     HRow getHRow(Integer rowN);
 

@@ -1,6 +1,7 @@
 package com.harioca.client.ui.consolepage;
 
 import com.google.gwt.core.client.GWT;
+import com.harioca.client.bean.ResultsBean;
 import com.harioca.client.ui.UIContents;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Label;
@@ -39,13 +40,13 @@ public class ResultsPanel extends HLayout {
         setHeight(200);
 
         final Label rowsTitle = new Label(contents.rows());
-        rowsTitle.addStyleName("console-results-label");
+        rowsTitle.setStyleName("console-results-label");
         rowsTitle.setHeight(20);
         rowsTitle.setWidth(80);
         addMember(rowsTitle);
 
         final DynamicForm rowsForm = new DynamicForm();
-        rowsForm.addStyleName("console-results-form");
+        rowsForm.setStyleName("console-results-form");
         rowsForm.setWidth(140);
         rowsForm.setTitleAlign(Alignment.LEFT);
         rowsForm.setColWidths(105, 35);
@@ -59,14 +60,14 @@ public class ResultsPanel extends HLayout {
         addMember(rowsForm);
 
         final Label timingTitle = new Label(contents.timing());
-        timingTitle.addStyleName("console-results-label");
+        timingTitle.setStyleName("console-results-label");
         timingTitle.setAlign(Alignment.CENTER);
         timingTitle.setHeight(20);
         timingTitle.setWidth(150);
         addMember(timingTitle);
 
         final DynamicForm timingForm = new DynamicForm();
-        timingForm.addStyleName("console-results-form");
+        timingForm.setStyleName("console-results-form");
         timingForm.setTitleAlign(Alignment.LEFT);
         timingForm.setWidth(140);
         timingForm.setColWidths(105, 35);
@@ -77,14 +78,14 @@ public class ResultsPanel extends HLayout {
         addMember(timingForm);
 
         final Label performanceTitle = new Label(contents.performance());
-        performanceTitle.addStyleName("console-results-label");
+        performanceTitle.setStyleName("console-results-label");
         performanceTitle.setAlign(Alignment.CENTER);
         performanceTitle.setHeight(20);
         performanceTitle.setWidth(160);
         addMember(performanceTitle);
 
         final DynamicForm performanceForm = new DynamicForm();
-        performanceForm.addStyleName("console-results-form");
+        performanceForm.setStyleName("console-results-form");
         performanceForm.setTitleAlign(Alignment.LEFT);
         performanceForm.setWidth(170);
         performanceForm.setColWidths(105, 65);
@@ -97,14 +98,14 @@ public class ResultsPanel extends HLayout {
         addMember(performanceForm);
 
         final Label logsTitle = new Label(contents.logs());
-        logsTitle.addStyleName("console-results-label");
+        logsTitle.setStyleName("console-results-label");
         logsTitle.setAlign(Alignment.CENTER);
         logsTitle.setHeight(20);
         logsTitle.setWidth(100);
         addMember(logsTitle);
 
         final DynamicForm logsForm = new DynamicForm();
-        logsForm.addStyleName("console-results-form");
+        logsForm.setStyleName("console-results-form");
         logsForm.setTitleAlign(Alignment.LEFT);
         logsForm.setWidth(140);
         logsForm.setColWidths(105, 35);
@@ -117,13 +118,13 @@ public class ResultsPanel extends HLayout {
         addMember(logsForm);
 
         final Label advicesTitle = new Label(contents.advices());
-        advicesTitle.addStyleName("console-results-label");
+        advicesTitle.setStyleName("console-results-label");
         advicesTitle.setAlign(Alignment.CENTER);
         advicesTitle.setHeight(20);
         advicesTitle.setWidth(120);
         addMember(advicesTitle);
 
-        advicesPanel.addStyleName("console-advices-form");
+        advicesPanel.setStyleName("console-advices-form");
         advicesPanel.setWidth("*");
         advicesPanel.setPadding(10);
         advicesPanel.setMembersMargin(5);
@@ -141,28 +142,25 @@ public class ResultsPanel extends HLayout {
         CodeRunner.get().setResultsPanel(this);
     }
 
-    public void updateData() {
-        rowsSelected.setValue(100);
-        rowsInserted.setValue(0);
-        rowsDeleted.setValue(0);
+    public void updateData(ResultsBean results) {
+        rowsSelected.setValue(results.getRowsSelected());
+        rowsInserted.setValue(results.getRowsInserted());
+        rowsDeleted.setValue(results.getRowsDeleted());
         
-        timingTotal.setValue(1200);
-        timingMeanRequest.setValue(1);
-        timingCompilation.setValue(17);
+        timingTotal.setValue(results.getTimingTotal());
+        timingMeanRequest.setValue(results.getTimingMeanRequest());
+        timingCompilation.setValue(results.getTimingCompilation());
 
-        performanceRequests.setValue(10);
-        performanceVolume.setValue("1422 bytes");
+        performanceRequests.setValue(results.getPerformanceRequests());
+        performanceVolume.setValue(results.getPerformanceVolume());
 //        performanceCPU.setValue();
 //        performanceMemory.setValue();
-        performanceCached.setValue("100 rows");
+        performanceCached.setValue(results.getPerformanceCached());
 
-        logsWarns.setValue(0);
-        logsErrors.setValue(0);
+        logsWarns.setValue(results.getLogsWarns());
+        logsErrors.setValue(results.getLogsErrors());
         
-        final String[] advices = new String[] {
-                " - You got a lot of requests to the server. Try to increase cache volume."
-        };
-        for (String advice : advices) {
+        for (String advice : results.getAdvices()) {
             final Label adviceLabel = new Label("<font size=3>" + advice + "</font>");
             adviceLabel.setHeight(20);
             advicesPanel.addMember(adviceLabel);

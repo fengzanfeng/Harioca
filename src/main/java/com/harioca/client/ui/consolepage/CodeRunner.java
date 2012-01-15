@@ -1,6 +1,7 @@
 package com.harioca.client.ui.consolepage;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.harioca.client.bean.ResultsBean;
 import com.harioca.client.service.HariocaShellService;
 
 public class CodeRunner {
@@ -24,11 +25,11 @@ public class CodeRunner {
     }
 
     public void run() {
-        HariocaShellService.App.getInstance().run(console.getCode(), new AsyncCallback<String>() {
+        HariocaShellService.App.getInstance().run(console.getCode(), new AsyncCallback<ResultsBean>() {
 
             @Override
-            public void onSuccess(String result) {
-                resultsPanel.updateData();
+            public void onSuccess(ResultsBean result) {
+                resultsPanel.updateData(result);
             }
 
             @Override
