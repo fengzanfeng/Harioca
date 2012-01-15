@@ -1,4 +1,4 @@
-package com.harioca.client.ui.torefactor;
+package com.harioca.client.ui;
 
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Label;

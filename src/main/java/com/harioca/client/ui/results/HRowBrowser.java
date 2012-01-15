@@ -2,7 +2,7 @@ package com.harioca.client.ui.results;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.harioca.client.service.HariocaShellService;
-import com.harioca.client.ui.torefactor.HariocaEntryPoint;
+import com.harioca.client.ui.HariocaEntryPoint;
 import com.harioca.client.bean.hbase.HPageDefinition;
 import com.harioca.client.bean.hbase.HRow;
 import com.smartgwt.client.types.DragAppearance;

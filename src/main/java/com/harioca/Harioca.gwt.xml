@@ -4,6 +4,7 @@
 
     <!-- Inherit the core Web Toolkit stuff.                  -->
     <inherits name='com.google.gwt.user.User'/>
+    <inherits name="com.google.gwt.i18n.I18N"/>
 
     <inherits name='com.mastergaurav.codemirror.CodeMirror'/>
     <inherits name="com.smartgwt.SmartGwt"/>
@@ -12,7 +13,7 @@
     <servlet path='/HariocaShellService' class='com.harioca.server.HariocaShellServiceImpl'/>
 
     <!-- Specify the app entry point class.                   -->
-    <entry-point class='com.harioca.client.ui.torefactor.HariocaEntryPoint'/>
+    <entry-point class='com.harioca.client.ui.HariocaEntryPoint'/>
 
     <set-property name="user.agent" value="safari"/>
 

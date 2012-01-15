@@ -1,5 +1,6 @@
-package com.harioca.client.ui.torefactor;
+package com.harioca.client.ui;
 
+import com.harioca.client.ui.HariocaEntryPoint;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.TextAreaItem;

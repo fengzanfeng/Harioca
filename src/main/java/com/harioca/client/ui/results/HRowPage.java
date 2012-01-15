@@ -1,6 +1,6 @@
 package com.harioca.client.ui.results;
 
-import com.harioca.client.ui.torefactor.HariocaEntryPoint;
+import com.harioca.client.ui.HariocaEntryPoint;
 import com.harioca.client.bean.hbase.HItemDefinition;
 import com.smartgwt.client.types.LayoutPolicy;
 import com.smartgwt.client.widgets.layout.HLayout;
@@ -11,10 +11,10 @@ import java.util.*;
 
 public class HRowPage extends HLayout {
 
-    private final Layout side = new Layout();
     private final VLayout rowLayout = new VLayout();
 
     private HItem rowIdItem = null;
+    private final Layout side = new Layout();
     private final Map<String, HFamilyPanel> families = new HashMap<String, HFamilyPanel>();
     private final Map<String, HItem> items = new HashMap<String, HItem>();
 

@@ -1,13 +1,23 @@
 package com.harioca.client.ui.consolepage;
 
+import com.google.gwt.core.client.GWT;
+import com.harioca.client.ui.UIContents;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.form.DynamicForm;
+import com.smartgwt.client.widgets.form.fields.LinkItem;
 import com.smartgwt.client.widgets.form.fields.StaticTextItem;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 public class ResultsPanel extends HLayout {
+
+    private UIContents contents = (UIContents) GWT.create(UIContents.class);
+
+    private final StaticTextItem rowsSelected = new StaticTextItem(contents.resultsSelected(), contents.resultsSelected());
+    private final StaticTextItem rowsInserted = new StaticTextItem(contents.resultsInserted(), contents.resultsInserted());
+    private final StaticTextItem rowsDeleted = new StaticTextItem(contents.resultsDeleted(), contents.resultsDeleted());
+    private final StaticTextItem rowsSeeResults = new StaticTextItem();
 
     public ResultsPanel() {
         setMargin(10);
@@ -19,27 +29,17 @@ public class ResultsPanel extends HLayout {
         rowsTitle.setWidth(80);
         addMember(rowsTitle);
 
-        final VLayout rowsPanel = new VLayout();
-        rowsPanel.addStyleName("console-results-form");
-        rowsPanel.setWidth(120);
+        final DynamicForm rowsForm = new DynamicForm();
+        rowsForm.addStyleName("console-results-form");
+        rowsForm.setWidth(120);
+//        rowsForm.setMinColWidth(120);
+        rowsForm.setTitleAlign(Alignment.LEFT);
+//        rowsForm.setAlign(Alignment.CENTER);
+        rowsSeeResults.setShowTitle(false);
+        rowsSeeResults.setValue("<font color='blue' size=3>" + contents.seeResults() + "</font>");
+        rowsForm.setItems(rowsSelected, rowsInserted, rowsDeleted);
 
-        final Label rowsSelected = new Label("Selected: &nbsp;&nbsp;&nbsp;&nbsp; 100");
-        rowsSelected.setHeight(20);
-        rowsPanel.addMember(rowsSelected);
-
-        final Label rowsInserted = new Label("Inserted: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0");
-        rowsInserted.setHeight(20);
-        rowsPanel.addMember(rowsInserted);
-
-        final Label rowsDeleted = new Label("Deleted: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0");
-        rowsDeleted.setHeight(20);
-        rowsPanel.addMember(rowsDeleted);
-
-        final Label rowsSeeInForms = new Label("<font color='blue' size=3><u>See Results...</u></font>");
-        rowsSeeInForms.setHeight(20);
-        rowsPanel.addMember(rowsSeeInForms);
-
-        addMember(rowsPanel);
+        addMember(rowsForm);
 
 
         final Label timingTitle = new Label("Timing (ms) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
@@ -155,6 +155,13 @@ public class ResultsPanel extends HLayout {
 
         addMember(advicesPanel);
 
+        CodeRunner.get().setResultsPanel(this);
+    }
+
+    public void updateData() {
+        rowsSelected.setValue(100);
+        rowsInserted.setValue(0);
+        rowsDeleted.setValue(0);
     }
 
 }
