@@ -3,6 +3,12 @@
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="harioca-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="Harioca:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.codehaus.groovy:groovy-all:1.8.4" />
+          <element id="library" level="project" name="Maven: com.mastergaurav:codemirror:0.9" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

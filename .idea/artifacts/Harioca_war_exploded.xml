@@ -9,6 +9,8 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.smartgwt:smartgwt:3.0" />
+          <element id="library" level="project" name="Maven: org.codehaus.groovy:groovy-all:1.8.4" />
+          <element id="library" level="project" name="Maven: com.mastergaurav:codemirror:0.9" />
         </element>
       </element>
     </root>
